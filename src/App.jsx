@@ -1,5 +1,11 @@
+import TicTacToe from './components/TicTacToe/TicTacToe';
+
 function App() {
-  return <></>;
+  return (
+    <div className="container">
+      <TicTacToe />
+    </div>
+  );
 }
 
 export default App;
