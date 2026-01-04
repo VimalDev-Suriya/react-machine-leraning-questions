@@ -1,5 +1,6 @@
 @import './components/TicTacToe/TicTacToe.scss';
+@import './components//Toast//Toast.scss';
 
 .container {
-  display: flex;
+  position: relative;
 }

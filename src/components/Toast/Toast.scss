@@ -1,0 +1,56 @@
+$toast-colors: (
+  success: green,
+  warning: rgb(201, 201, 41),
+  info: blue,
+  error: red,
+);
+
+// $toast-position: (
+//   $top-right: (
+//     $top: 0,
+//     $right: 0,
+//   ),
+// );
+
+.toast-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000;
+}
+
+.toast-pos-top-right {
+  top: 0;
+  right: 0;
+}
+
+// @each $position, $value in $toast-position{
+//     .toast-pos-#{$position}{
+//         @each
+//     }
+// }
+
+.toast {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  border-radius: 0.3rem;
+  padding: 0.2rem 1rem;
+  gap: 10px;
+  color: white;
+  margin-bottom: 0.5rem;
+
+  @each $name, $color in $toast-colors {
+    &-#{$name} {
+      background-color: $color;
+    }
+  }
+
+  .toast-dismissable-button {
+    outline: none;
+    background: transparent;
+    font-size: 1.5rem;
+    border: none;
+    padding: 0.5rem;
+  }
+}

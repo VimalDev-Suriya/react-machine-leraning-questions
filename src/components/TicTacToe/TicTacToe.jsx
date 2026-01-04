@@ -1,19 +1,29 @@
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import TicTacToeBoard from './TicTacToeBoard';
 import { calculateWinner } from '../../utils/tictactoe';
+import { ToastContext } from '../Toast/ToastContext';
+import { useToast } from '../Toast/useToast';
 
 const TicTacToe = () => {
   const [board, setBoard] = useState(new Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const { success } = useToast();
 
   const user = isXNext ? 'X' : 'O';
 
   const winner = calculateWinner(board);
   const isDraw = !winner && board.every((user) => user);
 
+  useEffect(() => {
+    if (winner) {
+      success('Finally we won the game');
+    }
+  }, [winner, success]);
+
   const handleSelect = (idx) => {
-    if (board[idx] || winner) return;
+    if (board[idx] || winner) {
+      return;
+    }
 
     const boardClone = [...board];
     boardClone[idx] = user;
