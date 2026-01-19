@@ -1,15 +1,23 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import UserInputDebounce from './components/Debounce/UserInputDebounce';
 import TicTacToe from './components/TicTacToe/TicTacToe';
 import ToastContainer from './components/Toast/ToastContainer';
 import ToastProvider from './components/Toast/ToastProvider';
 
 function App() {
   return (
-    <ToastProvider>
-      <div className="container">
-        <TicTacToe />
+    <div className="container">
+      <ToastProvider>
         <ToastContainer />
-      </div>
-    </ToastProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<TicTacToe/>} />
+            <Route path="/user-input" element={<UserInputDebounce />} />
+          </Routes>
+        </BrowserRouter>
+      </ToastProvider>
+    </div>
   );
 }
 
