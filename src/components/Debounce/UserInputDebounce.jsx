@@ -7,6 +7,14 @@ const UserInputDebounce = () => {
 
     // * Debouncing 
     // * A rate limiting technique to prevent the function execution, to prevent the server with lot of loads  
+    // * The Flow of the useEffect is => useEffect(()=>{}, [])
+    // on Initial Mount - 
+    //     1. setup functions executes
+    //     2. Cleanup will not execute, but it registers it
+    // on Re-render 
+    //     1. [change in dependecnies], the cleanup function of the previous effect will execute, with older values, like old props, state.
+    //     2. Then new setup is registerd and executed.
+    //     3. New cleaup will execute.
     // useEffect(()=>{
     //     console.log('TIMER INITIATED')
     //     const timer = setTimeout(() => {
